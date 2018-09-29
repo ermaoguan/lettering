@@ -126,15 +126,17 @@ function main_process(read_method) {
          * 平滑=SMOOTH
          * 浑厚=STRONG
          ********************/
-        textItemRef.antiAliasMethod = AntiAlias.STRONG; //消除锯齿方式
+        textItemRef.antiAliasMethod = AntiAlias.SMOOTH; //消除锯齿方式
         /********************
          * 手动指定=MANUAL
          * 度量标准=METRICS
          * 视觉=OPTICAL（推荐这个，字距更为紧凑）
          ********************/
         textItemRef.autoKerning = AutoKernType.OPTICAL; //字符间距微调
+        textItemRef.useAutoLeading = false;//取消自动行距
+        textItemRef.leading = 31;//行距
         textItemRef.color = textColor;//字体颜色
-        textItemRef.size = 30; //字号
+        textItemRef.size = 26; //字号
         textItemRef.font = fontName;
         textItemRef.position = Array(width * 0.1 + n * (width / (i + 1)), height * 0.1 + n * (height / (i + 1)));//位置
         textItemRef.contents = writeOnLayerS(n, row_len, myLineArray, emptrow);//写入图层
@@ -151,9 +153,8 @@ function main_process(read_method) {
 }
 
 //================设置区域================
-// var read_method = '对话框选取';
+//var read_method = '对话框选取';
 var read_method = '读取特定文档';
 
 //================启动程序================
 main_process(read_method);
-
